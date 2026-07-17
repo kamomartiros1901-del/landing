@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бизнес-лендинг | Создам под ключ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---- Сброс и базовые стили ---- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { font-size: 36px; font-weight: 800; text-align: center; margin-bottom: 16px; }
+        .section-subtitle { text-align: center; font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto 48px; }
+        .btn {
+            display: inline-block; background: #2563eb; color: #fff; padding: 14px 40px;
+            border-radius: 50px; font-weight: 700; font-size: 18px; transition: all 0.3s ease;
+            border: none; cursor: pointer; text-align: center;
+        }
+        .btn:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.3); }
+        .btn-secondary { background: transparent; color: #2563eb; border: 2px solid #2563eb; }
+        .btn-secondary:hover { background: #2563eb; color: #fff; }
+        .btn-telegram { background: #26a5e4; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-telegram:hover { background: #1b8bc2; }
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 80px 0 60px; color: #fff; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 16px; }
+        .hero h1 span { color: #3b82f6; }
+        .hero p { font-size: 22px; color: #cbd5e1; max-width: 700px; margin: 0 auto 32px; }
+        .hero .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 40px; }
+        .hero-image { max-width: 100%; height: auto; border-radius: 20px; margin-top: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .stats { padding: 60px 0; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; text-align: center; }
+        .stat-item h3 { font-size: 40px; font-weight: 800; color: #0f172a; }
+        .stat-item p { font-size: 16px; color: #64748b; }
+        .benefits { padding: 80px 0; background: #ffffff; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+        .benefit-item { background: #f1f5f9; padding: 30px; border-radius: 20px; text-align: center; transition: 0.3s; }
+        .benefit-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .benefit-item .icon { font-size: 40px; margin-bottom: 12px; color: #3b82f6; }
+        .services { padding: 80px 0; background: #f8fafc; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .service-card { background: #fff; border-radius: 20px; padding: 30px; text-align: center; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .service-card.popular { border-color: #3b82f6; box-shadow: 0 10px 30px rgba(37,99,235,0.1); }
+        .service-card.popular .badge { display: inline-block; background: #3b82f6; color: #fff; font-size: 12px; padding: 4px 16px; border-radius: 20px; margin-bottom: 12px; text-transform: uppercase; }
+        .service-card .price { font-size: 36px; font-weight: 800; margin: 16px 0; }
+        .service-card ul { list-style: none; text-align: left; padding: 0; margin: 20px 0; }
+        .service-card ul li { padding: 6px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; }
+        .service-card ul li::before { content: "✓"; color: #3b82f6; font-weight: 700; margin-right: 8px; }
+        .service-card .btn { width: 100%; padding: 12px; font-size: 16px; }
+        .testimonials { padding: 80px 0; background: #ffffff; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .testimonial-item { background: #f1f5f9; padding: 30px; border-radius: 20px; }
+        .testimonial-item p { font-style: italic; margin-bottom: 16px; color: #334155; }
+        .testimonial-item .author { font-weight: 700; color: #0f172a; }
+        .testimonial-item .position { font-size: 14px; color: #64748b; }
+        .faq { padding: 80px 0; background: #f8fafc; }
+        .faq-item { background: #fff; padding: 20px 30px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .faq-item h4 { font-weight: 700; margin-bottom: 8px; }
+        .faq-item p { color: #64748b; }
+        .lead-form { padding: 80px 0; background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; }
+        .lead-form .container { max-width: 600px; text-align: center; }
+        .lead-form h2 { font-size: 32px; margin-bottom: 8px; }
+        .lead-form p { margin-bottom: 30px; color: #94a3b8; }
+        .lead-form form { display: flex; flex-direction: column; gap: 16px; }
+        .lead-form input { padding: 16px; border-radius: 50px; border: none; font-size: 16px; outline: none; }
+        .lead-form .btn { background: #3b82f6; font-size: 20px; padding: 16px; }
+        .lead-form .btn:hover { background: #2563eb; }
+        .footer { background: #1e293b; color: #94a3b8; padding: 30px 0; text-align: center; }
+        .footer a { color: #3b82f6; font-weight: 600; }
+        .footer .social { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
+        .footer .social a { color: #94a3b8; font-size: 24px; transition: color 0.3s; }
+        .footer .social a:hover { color: #3b82f6; }
+        .scroll-top {
+            position: fixed; bottom: 30px; right: 30px; background: #2563eb; color: #fff;
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999;
+        }
+        .scroll-top.visible { opacity: 1; pointer-events: auto; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .hero .btn-group { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Создам лендинг, который <span>продаёт за вас</span></h1>
+            <p>Получите готовую посадочную страницу, которая приносит заявки 24/7. Без лишних затрат и долгих согласований.</p>
+            <div class="btn-group">
+                <a href="#form" class="btn">Заказать бесплатную консультацию</a>
+                <a href="https://t.me/kamo_martirosyan" class="btn btn-telegram" target="_blank">
+                    <i class="fab fa-telegram-plane"></i> Написать в Telegram
+                </a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop" alt="Бизнес-лендинг" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item"><h3>50+</h3><p>Выполненных проектов</p></div>
+                <div class="stat-item"><h3>100%</h3><p>Довольных клиентов</p></div>
+                <div class="stat-item"><h3>15 дней</h3><p>Средний срок сдачи</p></div>
+                <div class="stat-item"><h3>4.9</h3><p>Средняя оценка</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают меня</h2>
+            <p class="section-subtitle">Я делаю лендинги, которые приносят реальные деньги вашему бизнесу.</p>
+            <div class="benefits-grid">
+                <div class="benefit-item"><div class="icon"><i class="fas fa-rocket"></i></div><h3>Высокая конверсия</h3><p>Каждая секция продумана с точки зрения психологии продаж.</p></div>
+                <div class="benefit-item"><div class="icon"><i class="fas fa-bolt"></i></div><h3>Быстро и без бюрократии</h3><p>Готовый лендинг за 7 дней. Никаких лишних согласований.</p></div>
+                <div class="benefit-item"><div class="icon"><i class="fas fa-coins"></i></div><h3>Прозрачные цены</h3><p>Фиксированная стоимость без скрытых доплат. Вы платите за результат.</p></div>
+                <div class="benefit-item"><div class="icon"><i class="fas fa-headset"></i></div><h3>Техническая поддержка</h3><p>Помогаю с настройкой рекламы и доработками в течение месяца.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Тарифы</h2>
+            <p class="section-subtitle">Выберите подходящий пакет для вашего бизнеса.</p>
+            <div class="services-grid">
+                <div class="service-card"><h3>Базовый</h3><div class="price">19 900 ₽</div><ul><li>Одностраничный лендинг</li><li>Текст + дизайн</li><li>Адаптив под мобильные</li><li>Форма захвата</li></ul><a href="#form" class="btn btn-secondary">Заказать</a></div>
+                <div class="service-card popular"><div class="badge">Популярный</div><h3>Оптимальный</h3><div class="price">34 900 ₽</div><ul><li>Всё из базового</li><li>Блок отзывов + портфолио</li><li>Настройка Яндекс.Метрики</li><li>Бонус: 5 баннеров</li></ul><a href="#form" class="btn">Заказать</a></div>
+                <div class="service-card"><h3>VIP</h3><div class="price">59 900 ₽</div><ul><li>Всё из оптимального</li><li>Индивидуальный дизайн</li><li>Анимации + калькулятор</li><li>Поддержка 1 месяц</li></ul><a href="#form" class="btn btn-secondary">Заказать</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Что говорят клиенты</h2>
+            <p class="section-subtitle">Реальные отзывы тех, кто уже получил результат.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-item"><p>«Лендинг превзошёл ожидания. За первый месяц получили 40 заявок.»</p><div class="author">Алексей, студия дизайна</div><div class="position">Владелец бизнеса</div></div>
+                <div class="testimonial-item"><p>«Раньше сайт был бесполезен, теперь идёт постоянный поток клиентов.»</p><div class="author">Мария, фитнес-клуб</div><div class="position">Директор</div></div>
+                <div class="testimonial-item"><p>«Конверсия выросла в 3 раза. Рекомендую!»</p><div class="author">Дмитрий, инфобизнес</div><div class="position">Предприниматель</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (часто задаваемые вопросы) -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <p class="section-subtitle">Всё, что вы хотели знать о создании лендинга.</p>
+            <div class="faq-item">
+                <h4>Сколько времени занимает создание лендинга?</h4>
+                <p>В среднем 7 дней. Всё зависит от сложности и объёма правок.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Что нужно для начала работы?</h4>
+                <p>Ваши пожелания, бренд-цвета и контент (тексты, фото). Остальное я делаю сам.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Будет ли сайт адаптирован под телефоны?</h4>
+                <p>Да, все мои лендинги отлично выглядят на любых устройствах.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма с выбором: телефон + необязательный Telegram -->
+    <section class="lead-form" id="form">
+        <div class="container">
+            <h2>Получите бесплатную консультацию</h2>
+            <p>Оставьте заявку, и я расскажу, как ваш лендинг может увеличить прибыль.</p>
+            <form action="https://script.google.com/macros/s/AKfycbyJWIB2lxVadaZtZsmSK2gpeASBPrxvqp6o9-BwTvFkhi9fDT4MoZtixrJus08hnob5SQ/exec" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Ваш телефон (обязательно)" required>
+                <input type="text" name="telegram" placeholder="Ваш Telegram (необязательно)">
+                <button type="submit" class="btn">Отправить заявку</button>
+            </form>
+            <p style="margin-top: 20px; color: #94a3b8; font-size: 14px;">Или напишите мне напрямую: <a href="https://t.me/kamo_martirosyan" style="color:#3b82f6; font-weight:600;">@kamo_martirosyan</a></p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 | Создание лендингов под ключ | Telegram: <a href="https://t.me/kamo_martirosyan" target="_blank">@kamo_martirosyan</a></p>
+            <div class="social">
+                <a href="https://t.me/kamo_martirosyan" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
+                <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" (появляется при скролле) -->
+    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Показать/скрыть кнопку наверх
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('scrollTop');
+            if (window.scrollY > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
