@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лендинг под ключ | Современный дизайн</title>
+    <title>Лендинг под ключ | Kamo Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ===== Сброс и базовые ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
@@ -19,75 +18,42 @@
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* ===== Переменные ===== */
         :root {
             --glass: rgba(255, 255, 255, 0.06);
             --glass-border: rgba(255, 255, 255, 0.1);
-            --accent: #7c3aed; /* фиолетовый */
-            --accent-glow: #a78bfa;
-            --bg-dark: #0b0d12;
-            --card-bg: rgba(255, 255, 255, 0.04);
+            --accent: #7c3aed;
             --text-muted: #9ca3af;
         }
 
-        /* ===== Кнопки ===== */
         .btn {
-            display: inline-block;
-            padding: 14px 36px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            display: inline-block; padding: 14px 36px; border-radius: 60px;
+            font-weight: 700; font-size: 16px; transition: 0.3s;
+            cursor: pointer; border: none; text-align: center;
         }
         .btn-primary {
-            background: var(--accent);
-            color: #fff;
+            background: var(--accent); color: #fff;
             box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
         }
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-3px);
             box-shadow: 0 0 40px rgba(124, 58, 237, 0.5);
         }
         .btn-outline {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
+            background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff;
         }
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: var(--accent);
-        }
+        .btn-outline:hover { border-color: var(--accent); }
         .btn-telegram {
-            background: #26a5e4;
-            color: #fff;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            background: #26a5e4; color: #fff; display: inline-flex; align-items: center; gap: 10px;
         }
-        .btn-telegram:hover {
-            background: #1b8bc2;
-            transform: translateY(-2px);
-        }
+        .btn-telegram:hover { background: #1b8bc2; }
 
-        /* ===== Частицы (фон) ===== */
+        /* Частицы (для красоты) */
         .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            pointer-events:none; z-index:0; overflow:hidden;
         }
         .particle {
-            position: absolute;
-            border-radius: 50%;
+            position: absolute; border-radius: 50%;
             background: rgba(124, 58, 237, 0.15);
             animation: float linear infinite;
         }
@@ -97,280 +63,110 @@
             90% { opacity: 1; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
-        .particle:nth-child(1) { width: 6px; height: 6px; left: 10%; animation-duration: 18s; }
-        .particle:nth-child(2) { width: 10px; height: 10px; left: 30%; animation-duration: 25s; }
-        .particle:nth-child(3) { width: 4px; height: 4px; left: 50%; animation-duration: 20s; }
-        .particle:nth-child(4) { width: 14px; height: 14px; left: 70%; animation-duration: 30s; }
-        .particle:nth-child(5) { width: 8px; height: 8px; left: 90%; animation-duration: 22s; }
+        .particle:nth-child(1) { width:6px; height:6px; left:10%; animation-duration:18s; }
+        .particle:nth-child(2) { width:10px; height:10px; left:30%; animation-duration:25s; }
+        .particle:nth-child(3) { width:4px; height:4px; left:50%; animation-duration:20s; }
+        .particle:nth-child(4) { width:14px; height:14px; left:70%; animation-duration:30s; }
+        .particle:nth-child(5) { width:8px; height:8px; left:90%; animation-duration:22s; }
 
-        /* ===== Хедер ===== */
+        /* Хедер */
         .header {
-            padding: 20px 0;
-            background: rgba(11, 13, 18, 0.8);
-            backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 0; background: rgba(11, 13, 18, 0.8);
+            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
         }
         .logo {
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
+            font-size: 26px; font-weight: 900; letter-spacing: -0.5px;
             background: linear-gradient(135deg, var(--accent), #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .header-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+        .header-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
         .header-actions .btn { padding: 10px 24px; font-size: 14px; }
 
-        /* ===== Hero ===== */
+        /* Герой */
         .hero {
             padding: 120px 0 80px;
             background: radial-gradient(ellipse at 70% 30%, rgba(124, 58, 237, 0.08), transparent 70%);
-            position: relative;
-            z-index: 1;
-            text-align: center;
+            position: relative; z-index: 1; text-align: center;
         }
         .hero h1 {
-            font-size: 64px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+            font-size: 64px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px;
             background: linear-gradient(to right, #fff, #a78bfa, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero p {
-            font-size: 20px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
-        .hero .btn-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-        .hero-stats div {
-            text-align: center;
-        }
-        .hero-stats h3 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--accent);
-        }
-        .hero-stats p {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin: 0;
-        }
+        .hero p { font-size: 20px; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; }
+        .hero .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 50px; flex-wrap: wrap; }
+        .hero-stats div { text-align: center; }
+        .hero-stats h3 { font-size: 32px; font-weight: 800; color: var(--accent); }
+        .hero-stats p { font-size: 14px; color: var(--text-muted); margin:0; }
 
-        /* ===== Секции общие ===== */
+        /* Секции */
         section { padding: 80px 0; position: relative; z-index: 1; }
         .section-title {
-            font-size: 40px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 12px;
+            font-size: 40px; font-weight: 800; text-align: center; margin-bottom: 12px;
             background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto 40px;
-            font-size: 18px;
-        }
+        .section-subtitle { text-align: center; color: var(--text-muted); max-width: 500px; margin: 0 auto 40px; font-size: 18px; }
+        .grid-3 { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+        .grid-4 { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
-        /* ===== Карточки ===== */
-        .grid-2, .grid-3, .grid-4 {
-            display: grid;
-            gap: 30px;
-        }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-
+        /* Карточки (стекло) */
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 30px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            background: var(--glass); backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border); border-radius: 24px;
+            padding: 30px; transition: 0.4s;
         }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(124,58,237,0.05), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.1);
-        }
-        .card:hover::before { opacity: 1; }
-        .card .icon {
-            font-size: 40px;
-            color: var(--accent);
-            margin-bottom: 16px;
-            display: block;
-        }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 60px rgba(124, 58, 237, 0.1); }
+        .card .icon { font-size: 40px; color: var(--accent); margin-bottom: 16px; display:block; }
         .card h3 { font-size: 22px; margin-bottom: 8px; }
         .card p { color: var(--text-muted); font-size: 15px; }
 
-        /* ===== Портфолио ===== */
-        .portfolio .card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            background: #1a1c23;
+        /* Портфолио и Кейсы */
+        .portfolio .card img, .cases .card img {
+            width: 100%; height: 160px; object-fit: cover; border-radius: 16px; margin-bottom: 12px;
         }
-        .portfolio .card h4 { margin-bottom: 4px; }
-        .portfolio .card p { font-size: 14px; }
+        .cases .card { text-align: left; }
+        .cases .card h4 { margin-bottom: 4px; }
+        .cases .card p { font-size: 14px; }
 
-        /* ===== Тарифы ===== */
+        /* Тарифы */
         .price-card {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 30px;
-            text-align: center;
-            transition: 0.3s;
+            background: var(--glass); backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border); border-radius: 24px;
+            padding: 30px; text-align: center; transition: 0.3s;
         }
-        .price-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-        }
-        .price-card.popular {
-            border-color: var(--accent);
-            box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
-        }
-        .price-card.popular .badge {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-weight: 700;
-            font-size: 12px;
-            padding: 4px 16px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-        .price-card .price {
-            font-size: 42px;
-            font-weight: 800;
-            margin: 16px 0;
-            color: #fff;
-        }
-        .price-card ul {
-            list-style: none;
-            text-align: left;
-            padding: 0;
-            margin: 20px 0;
-        }
-        .price-card ul li {
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-        }
-        .price-card ul li::before {
-            content: "✓";
-            color: var(--accent);
-            font-weight: 700;
-            margin-right: 8px;
-        }
+        .price-card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        .price-card.popular { border-color: var(--accent); box-shadow: 0 0 40px rgba(124, 58, 237, 0.15); }
+        .price-card.popular .badge { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; padding: 4px 16px; border-radius: 20px; margin-bottom: 12px; text-transform: uppercase; }
+        .price-card .price { font-size: 42px; font-weight: 800; margin: 16px 0; color: #fff; }
+        .price-card ul { list-style: none; text-align: left; padding: 0; margin: 20px 0; }
+        .price-card ul li { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; }
+        .price-card ul li::before { content: "✓"; color: var(--accent); font-weight: 700; margin-right: 8px; }
         .price-card .btn { width: 100%; padding: 12px; font-size: 16px; }
 
-        /* ===== Форма ===== */
-        .lead-form {
-            background: radial-gradient(ellipse at center, rgba(124,58,237,0.1), transparent 70%);
-        }
+        /* Форма */
+        .lead-form { background: radial-gradient(ellipse at center, rgba(124,58,237,0.1), transparent 70%); }
         .lead-form .container { max-width: 560px; text-align: center; }
-        .lead-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 20px;
-        }
+        .lead-form form { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
         .lead-form input {
-            padding: 16px;
-            border-radius: 60px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
+            padding: 16px; border-radius: 60px; border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05); color: #fff; font-size: 16px; outline: none; transition: 0.3s;
         }
-        .lead-form input:focus {
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 20px rgba(124,58,237,0.1);
-        }
-        .lead-form .btn {
-            background: var(--accent);
-            font-size: 20px;
-            padding: 16px;
-            margin-top: 8px;
-        }
-        .lead-form .btn:hover {
-            box-shadow: 0 0 30px rgba(124,58,237,0.4);
-        }
+        .lead-form input:focus { border-color: var(--accent); background: rgba(255,255,255,0.08); box-shadow: 0 0 20px rgba(124,58,237,0.1); }
+        .lead-form .btn { background: var(--accent); font-size: 20px; padding: 16px; margin-top: 8px; }
+        .lead-form .btn:hover { box-shadow: 0 0 30px rgba(124,58,237,0.4); }
 
-        /* ===== Cookie ===== */
+        /* Cookie */
         .cookie-overlay {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            right: 30px;
-            max-width: 460px;
-            background: rgba(20, 22, 30, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            z-index: 999;
-            display: none;
-            transition: 0.3s;
+            position: fixed; bottom: 30px; left: 30px; right: 30px; max-width: 460px;
+            background: rgba(20, 22, 30, 0.95); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8); z-index: 999; display: none;
         }
         .cookie-overlay.show { display: block; }
         .cookie-overlay h3 { font-size: 18px; margin-bottom: 6px; color: var(--accent); }
@@ -378,18 +174,10 @@
         .cookie-overlay .actions { display: flex; gap: 12px; flex-wrap: wrap; }
         .cookie-overlay .btn { padding: 10px 24px; font-size: 14px; }
 
-        /* ===== Анимации при скролле ===== */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Анимация появления */
+        .fade-up { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* ===== Адаптив ===== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 36px; }
             .hero-stats { gap: 20px; }
@@ -397,42 +185,35 @@
             .header .container { flex-direction: column; align-items: stretch; text-align: center; }
             .header-actions { justify-content: center; }
             .cookie-overlay { left: 10px; right: 10px; bottom: 10px; }
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Частицы -->
+    <!-- Частицы на фоне -->
     <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
 
-    <!-- HEADER -->
+    <!-- Хедер -->
     <header class="header">
         <div class="container">
             <div class="logo">Kamo<span style="-webkit-text-fill-color:transparent;">Design</span></div>
             <div class="header-actions">
-                <a href="https://t.me/kamo_martirosyan" class="btn btn-telegram" target="_blank">
-                    <i class="fab fa-telegram-plane"></i> Telegram
-                </a>
+                <a href="https://t.me/kamo_martirosyan" class="btn btn-telegram" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
                 <a href="#form" class="btn btn-primary">Обсудить</a>
             </div>
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- Герой -->
     <section class="hero">
         <div class="container">
             <h1>Создам лендинг,<br>который продаёт</h1>
             <p>Дизайн, который впечатляет. Код, который работает. Конверсия, которая приносит деньги.</p>
             <div class="btn-group">
                 <a href="#form" class="btn btn-primary">Получить консультацию</a>
-                <a href="#portfolio" class="btn btn-outline">Кейсы</a>
+                <a href="#portfolio" class="btn btn-outline">Смотреть кейсы</a>
             </div>
             <div class="hero-stats">
                 <div><h3>50+</h3><p>проектов</p></div>
@@ -442,7 +223,7 @@
         </div>
     </section>
 
-    <!-- PREMIUM BLOCKS (с анимацией) -->
+    <!-- Преимущества -->
     <section class="benefits">
         <div class="container">
             <h2 class="section-title">Почему я</h2>
@@ -455,21 +236,57 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
+    <!-- Портфолио -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <h2 class="section-title">Недавние работы</h2>
-            <p class="section-subtitle">Реальные кейсы, которые приносят клиентам деньги.</p>
+            <p class="section-subtitle">Реальные проекты, которые приносят клиентам деньги.</p>
             <div class="grid-4">
-                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Клининг" alt=""><h4>Клининг</h4><p>Конверсия 12% за первую неделю</p></div>
-                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Курс" alt=""><h4>Онлайн-курс</h4><p>150 заявок на бесплатный урок</p></div>
-                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Магазин" alt=""><h4>Интернет-магазин</h4><p>Рост продаж на 40%</p></div>
-                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Салон" alt=""><h4>Салон красоты</h4><p>30 записей за месяц</p></div>
+                <div class="card fade-up">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc4f20?w=400&h=220&fit=crop" alt="Клининг">
+                    <h4>Клининг</h4>
+                    <p>Конверсия 12% за первую неделю</p>
+                </div>
+                <div class="card fade-up">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=220&fit=crop" alt="Курс">
+                    <h4>Онлайн-курс</h4>
+                    <p>150 заявок на бесплатный урок</p>
+                </div>
+                <div class="card fade-up">
+                    <img src="https://images.unsplash.com/photo-1472851294608-055d826d5bfe?w=400&h=220&fit=crop" alt="Магазин">
+                    <h4>Интернет-магазин</h4>
+                    <p>Рост продаж на 40%</p>
+                </div>
+                <div class="card fade-up">
+                    <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=400&h=220&fit=crop" alt="Салон">
+                    <h4>Салон красоты</h4>
+                    <p>30 записей за месяц</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- Кейсы (подробные примеры) -->
+    <section class="cases">
+        <div class="container">
+            <h2 class="section-title">Кейсы</h2>
+            <p class="section-subtitle">Подробные примеры с описанием задач и результатов.</p>
+            <div class="grid-2" style="display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card fade-up">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=220&fit=crop" alt="Кейс стоматология">
+                    <h4>Сайт для стоматологии</h4>
+                    <p><strong>Задача:</strong> Увеличить запись на приём.<br><strong>Результат:</strong> +70% звонков за 2 недели.</p>
+                </div>
+                <div class="card fade-up">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=220&fit=crop" alt="Кейс инфобизнес">
+                    <h4>Лендинг для инфобизнеса</h4>
+                    <p><strong>Задача:</strong> Собрать базу подписчиков.<br><strong>Результат:</strong> 300 лидов за месяц.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тарифы -->
     <section class="pricing">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
@@ -482,7 +299,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- Отзывы -->
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">Отзывы</h2>
@@ -516,7 +333,7 @@
         </div>
     </section>
 
-    <!-- GUARANTEES -->
+    <!-- Гарантии -->
     <section class="guarantees">
         <div class="container">
             <h2 class="section-title">Наши гарантии</h2>
@@ -528,7 +345,7 @@
         </div>
     </section>
 
-    <!-- LEAD FORM -->
+    <!-- Форма захвата -->
     <section class="lead-form" id="form">
         <div class="container">
             <h2 class="section-title" style="font-size:32px;">Готовы начать?</h2>
@@ -543,7 +360,7 @@
         </div>
     </section>
 
-    <!-- CONTACTS -->
+    <!-- Контакты -->
     <section class="contacts" style="padding:40px 0; text-align:center; border-top:1px solid rgba(255,255,255,0.05);">
         <div class="container">
             <p style="font-size:20px; font-weight:600; margin-bottom:8px;">Свяжитесь со мной</p>
@@ -553,7 +370,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Подвал -->
     <footer class="footer" style="padding:20px 0; text-align:center; border-top:1px solid rgba(255,255,255,0.05); color:var(--text-muted);">
         <div class="container">
             <p>© 2026 | Kamo Design | <a href="https://t.me/kamo_martirosyan" style="color:var(--accent);">@kamo_martirosyan</a></p>
@@ -565,7 +382,7 @@
         </div>
     </footer>
 
-    <!-- COOKIE -->
+    <!-- Cookie -->
     <div class="cookie-overlay" id="cookieConsent">
         <h3><i class="fas fa-cookie-bite"></i> Cookies</h3>
         <p>Мы используем cookies для аналитики и улучшения работы сайта. Продолжая, вы соглашаетесь с политикой.</p>
@@ -576,7 +393,7 @@
     </div>
 
     <script>
-        // Cookie consent
+        // Cookie
         const cookieBanner = document.getElementById('cookieConsent');
         const acceptBtn = document.getElementById('acceptCookies');
         const policyBtn = document.getElementById('policyBtn');
@@ -594,7 +411,7 @@
             alert('Ссылка на политику конфиденциальности будет здесь.');
         });
 
-        // Scroll animations (Intersection Observer)
+        // Анимации при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -607,6 +424,5 @@
             observer.observe(el);
         });
     </script>
-
 </body>
 </html>
