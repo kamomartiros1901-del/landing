@@ -7,13 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ---- Сброс и базовые стили ---- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; overflow-x: hidden; }
         a { text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-title { font-size: 36px; font-weight: 800; text-align: center; margin-bottom: 16px; }
-        .section-subtitle { text-align: center; font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto 48px; }
         .btn {
             display: inline-block; background: #2563eb; color: #fff; padding: 14px 40px;
             border-radius: 50px; font-weight: 700; font-size: 18px; transition: all 0.3s ease;
@@ -59,10 +56,6 @@
         .testimonial-item p { font-style: italic; margin-bottom: 16px; color: #334155; }
         .testimonial-item .author { font-weight: 700; color: #0f172a; }
         .testimonial-item .position { font-size: 14px; color: #64748b; }
-        .faq { padding: 80px 0; background: #f8fafc; }
-        .faq-item { background: #fff; padding: 20px 30px; border-radius: 16px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .faq-item h4 { font-weight: 700; margin-bottom: 8px; }
-        .faq-item p { color: #64748b; }
         .lead-form { padding: 80px 0; background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; }
         .lead-form .container { max-width: 600px; text-align: center; }
         .lead-form h2 { font-size: 32px; margin-bottom: 8px; }
@@ -76,13 +69,6 @@
         .footer .social { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
         .footer .social a { color: #94a3b8; font-size: 24px; transition: color 0.3s; }
         .footer .social a:hover { color: #3b82f6; }
-        .scroll-top {
-            position: fixed; bottom: 30px; right: 30px; background: #2563eb; color: #fff;
-            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999;
-        }
-        .scroll-top.visible { opacity: 1; pointer-events: auto; }
         @media (max-width: 768px) {
             .hero h1 { font-size: 36px; }
             .hero p { font-size: 18px; }
@@ -95,8 +81,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <h1>Создам лендинг, который <span>продаёт за вас</span></h1>
@@ -104,14 +88,12 @@
             <div class="btn-group">
                 <a href="#form" class="btn">Заказать бесплатную консультацию</a>
                 <a href="https://t.me/kamo_martirosyan" class="btn btn-telegram" target="_blank">
-                    <i class="fab fa-telegram-plane"></i> Написать в Telegram
+                    <i class="fab fa-telegram-plane"></i> @kamo_martirosyan
                 </a>
             </div>
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop" alt="Бизнес-лендинг" class="hero-image">
+            <img src="https://avatars.mds.yandex.net/i?id=8b02815dc99aee15cf3b880bd26f63fcd0cecb57-16113796-images-thumbs&n=13" alt="Бизнес-лендинг" class="hero-image">
         </div>
     </section>
-
-    <!-- Статистика -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -122,8 +104,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Преимущества -->
     <section class="benefits">
         <div class="container">
             <h2 class="section-title">Почему выбирают меня</h2>
@@ -136,8 +116,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Тарифы -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
@@ -149,8 +127,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Отзывы -->
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">Что говорят клиенты</h2>
@@ -162,43 +138,20 @@
             </div>
         </div>
     </section>
-
-    <!-- FAQ (часто задаваемые вопросы) -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Часто задаваемые вопросы</h2>
-            <p class="section-subtitle">Всё, что вы хотели знать о создании лендинга.</p>
-            <div class="faq-item">
-                <h4>Сколько времени занимает создание лендинга?</h4>
-                <p>В среднем 7 дней. Всё зависит от сложности и объёма правок.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Что нужно для начала работы?</h4>
-                <p>Ваши пожелания, бренд-цвета и контент (тексты, фото). Остальное я делаю сам.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Будет ли сайт адаптирован под телефоны?</h4>
-                <p>Да, все мои лендинги отлично выглядят на любых устройствах.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Форма с выбором: телефон + необязательный Telegram -->
     <section class="lead-form" id="form">
         <div class="container">
             <h2>Получите бесплатную консультацию</h2>
             <p>Оставьте заявку, и я расскажу, как ваш лендинг может увеличить прибыль.</p>
-            <form action="https://script.google.com/macros/s/AKfycbyJWIB2lxVadaZtZsmSK2gpeASBPrxvqp6o9-BwTvFkhi9fDT4MoZtixrJus08hnob5SQ/exec" method="POST">
+            <!-- ФОРМА УЖЕ С ТВОЕЙ ССЫЛКОЙ -->
+            <form action="https://script.google.com/macros/s/AKfycbxE5h9QrLmQbNW4vR64IV9oq0sBtKu_5yY2Fo5xKDtX38w4juKdYWBmdPWq8bmPceOzZA/exec" method="POST">
                 <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон (обязательно)" required>
-                <input type="text" name="telegram" placeholder="Ваш Telegram (необязательно)">
+                <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                <input type="text" name="tg" placeholder="Ваш Telegram (для связи)">
                 <button type="submit" class="btn">Отправить заявку</button>
             </form>
             <p style="margin-top: 20px; color: #94a3b8; font-size: 14px;">Или напишите мне напрямую: <a href="https://t.me/kamo_martirosyan" style="color:#3b82f6; font-weight:600;">@kamo_martirosyan</a></p>
         </div>
     </section>
-
-    <!-- Футер -->
     <footer class="footer">
         <div class="container">
             <p>© 2026 | Создание лендингов под ключ | Telegram: <a href="https://t.me/kamo_martirosyan" target="_blank">@kamo_martirosyan</a></p>
@@ -209,22 +162,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Кнопка "Наверх" (появляется при скролле) -->
-    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-
-    <script>
-        // Показать/скрыть кнопку наверх
-        window.addEventListener('scroll', function() {
-            const btn = document.getElementById('scrollTop');
-            if (window.scrollY > 400) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
-        });
-    </script>
 </body>
 </html>
