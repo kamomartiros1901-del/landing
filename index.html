@@ -3,279 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бизнес-лендинг | Создам под ключ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Лендинг под ключ | Современный дизайн</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== Сброс и базовые ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
-        a { text-decoration: none; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0d12;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
+        /* ===== Переменные ===== */
+        :root {
+            --glass: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #7c3aed; /* фиолетовый */
+            --accent-glow: #a78bfa;
+            --bg-dark: #0b0d12;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --text-muted: #9ca3af;
+        }
+
+        /* ===== Кнопки ===== */
         .btn {
-            display: inline-block; background: #2563eb; color: #fff; padding: 16px 48px;
-            border-radius: 50px; font-weight: 700; font-size: 18px; transition: all 0.3s;
-            border: none; cursor: pointer; text-align: center;
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { background: #1d4ed8; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,99,235,0.3); }
-        .btn-secondary { background: transparent; color: #2563eb; border: 2px solid #2563eb; }
-        .btn-secondary:hover { background: #2563eb; color: #fff; }
-        .btn-telegram { background: #26a5e4; display: inline-flex; align-items: center; gap: 10px; }
-        .btn-telegram:hover { background: #1b8bc2; }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--accent);
+        }
+        .btn-telegram {
+            background: #26a5e4;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-telegram:hover {
+            background: #1b8bc2;
+            transform: translateY(-2px);
+        }
 
+        /* ===== Частицы (фон) ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.15);
+            animation: float linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+        .particle:nth-child(1) { width: 6px; height: 6px; left: 10%; animation-duration: 18s; }
+        .particle:nth-child(2) { width: 10px; height: 10px; left: 30%; animation-duration: 25s; }
+        .particle:nth-child(3) { width: 4px; height: 4px; left: 50%; animation-duration: 20s; }
+        .particle:nth-child(4) { width: 14px; height: 14px; left: 70%; animation-duration: 30s; }
+        .particle:nth-child(5) { width: 8px; height: 8px; left: 90%; animation-duration: 22s; }
+
+        /* ===== Хедер ===== */
+        .header {
+            padding: 20px 0;
+            background: rgba(11, 13, 18, 0.8);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header-actions .btn { padding: 10px 24px; font-size: 14px; }
+
+        /* ===== Hero ===== */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 80px 0 60px; color: #fff; text-align: center; overflow: hidden; position: relative;
+            padding: 120px 0 80px;
+            background: radial-gradient(ellipse at 70% 30%, rgba(124, 58, 237, 0.08), transparent 70%);
+            position: relative;
+            z-index: 1;
+            text-align: center;
         }
-        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 16px; }
-        .hero h1 span { color: #3b82f6; }
-        .hero p { font-size: 22px; color: #cbd5e1; max-width: 700px; margin: 0 auto 32px; }
-        .hero .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 40px; }
-        .hero-image { max-width: 100%; height: auto; border-radius: 20px; margin-top: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, #a78bfa, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .hero .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        .hero-stats div {
+            text-align: center;
+        }
+        .hero-stats h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .hero-stats p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
 
-        .stats { padding: 60px 0; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 30px; text-align: center; }
-        .stat-item h3 { font-size: 44px; font-weight: 800; color: #0f172a; }
-        .stat-item p { font-size: 16px; color: #64748b; }
+        /* ===== Секции общие ===== */
+        section { padding: 80px 0; position: relative; z-index: 1; }
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+        }
 
-        .benefits { padding: 80px 0; background: #ffffff; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .benefit-item { background: #f1f5f9; padding: 30px; border-radius: 20px; text-align: center; transition: 0.3s; }
-        .benefit-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .benefit-item .icon { font-size: 48px; margin-bottom: 12px; color: #3b82f6; }
+        /* ===== Карточки ===== */
+        .grid-2, .grid-3, .grid-4 {
+            display: grid;
+            gap: 30px;
+        }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
-        .services { padding: 80px 0; background: #f8fafc; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-        .service-card { background: #fff; border-radius: 20px; padding: 30px; text-align: center; border: 1px solid #e2e8f0; transition: 0.3s; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-        .service-card.popular { border-color: #3b82f6; box-shadow: 0 10px 30px rgba(37,99,235,0.1); }
-        .service-card.popular .badge { display: inline-block; background: #3b82f6; color: #fff; font-size: 12px; padding: 4px 16px; border-radius: 20px; margin-bottom: 12px; text-transform: uppercase; }
-        .service-card .price { font-size: 36px; font-weight: 800; margin: 16px 0; }
-        .service-card ul { list-style: none; text-align: left; padding: 0; margin: 20px 0; }
-        .service-card ul li { padding: 6px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; }
-        .service-card ul li::before { content: "✓"; color: #3b82f6; font-weight: 700; margin-right: 8px; }
-        .service-card .btn { width: 100%; padding: 12px; font-size: 16px; }
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124,58,237,0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.1);
+        }
+        .card:hover::before { opacity: 1; }
+        .card .icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: block;
+        }
+        .card h3 { font-size: 22px; margin-bottom: 8px; }
+        .card p { color: var(--text-muted); font-size: 15px; }
 
-        .portfolio { padding: 80px 0; background: #ffffff; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .portfolio-item { background: #f1f5f9; border-radius: 16px; overflow: hidden; padding-bottom: 20px; text-align: center; transition: 0.3s; }
-        .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .portfolio-item img { width: 100%; height: 180px; object-fit: cover; background: #cbd5e1; }
-        .portfolio-item h4 { margin: 15px 0 5px; }
-        .portfolio-item p { color: #64748b; font-size: 14px; padding: 0 15px; }
+        /* ===== Портфолио ===== */
+        .portfolio .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            background: #1a1c23;
+        }
+        .portfolio .card h4 { margin-bottom: 4px; }
+        .portfolio .card p { font-size: 14px; }
 
-        .testimonials { padding: 80px 0; background: #f8fafc; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .testimonial-item { background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .testimonial-item p { font-style: italic; margin-bottom: 15px; color: #334155; }
-        .testimonial-item .author { font-weight: 700; color: #0f172a; }
+        /* ===== Тарифы ===== */
+        .price-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .price-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+        .price-card.popular {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
+        }
+        .price-card.popular .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .price-card .price {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 16px 0;
+            color: #fff;
+        }
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .price-card ul li {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+        }
+        .price-card ul li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .price-card .btn { width: 100%; padding: 12px; font-size: 16px; }
 
-        .faq { padding: 80px 0; background: #ffffff; }
-        .faq-list { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: #f1f5f9; margin-bottom: 12px; border-radius: 16px; padding: 20px; cursor: pointer; transition: 0.3s; }
-        .faq-item:hover { background: #e2e8f0; }
-        .faq-item .question { font-weight: 700; font-size: 18px; display: flex; justify-content: space-between; align-items: center; }
-        .faq-item .question i { font-size: 20px; }
-        .faq-item .answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .faq-item.active .answer { max-height: 200px; padding-top: 12px; }
-        .faq-item.active .question i { transform: rotate(180deg); }
+        /* ===== Форма ===== */
+        .lead-form {
+            background: radial-gradient(ellipse at center, rgba(124,58,237,0.1), transparent 70%);
+        }
+        .lead-form .container { max-width: 560px; text-align: center; }
+        .lead-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .lead-form input {
+            padding: 16px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .lead-form input:focus {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(124,58,237,0.1);
+        }
+        .lead-form .btn {
+            background: var(--accent);
+            font-size: 20px;
+            padding: 16px;
+            margin-top: 8px;
+        }
+        .lead-form .btn:hover {
+            box-shadow: 0 0 30px rgba(124,58,237,0.4);
+        }
 
-        .guarantees { padding: 60px 0; background: #f1f5f9; text-align: center; }
-        .guarantees-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px; }
-        .guarantee-item i { font-size: 40px; color: #3b82f6; margin-bottom: 10px; display: block; }
-        .guarantee-item h4 { font-size: 20px; margin-bottom: 8px; }
-        .guarantee-item p { color: #64748b; font-size: 15px; }
+        /* ===== Cookie ===== */
+        .cookie-overlay {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            max-width: 460px;
+            background: rgba(20, 22, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            z-index: 999;
+            display: none;
+            transition: 0.3s;
+        }
+        .cookie-overlay.show { display: block; }
+        .cookie-overlay h3 { font-size: 18px; margin-bottom: 6px; color: var(--accent); }
+        .cookie-overlay p { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+        .cookie-overlay .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .cookie-overlay .btn { padding: 10px 24px; font-size: 14px; }
 
-        .lead-form { padding: 80px 0; background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; }
-        .lead-form .container { max-width: 600px; text-align: center; }
-        .lead-form h2 { font-size: 32px; margin-bottom: 8px; }
-        .lead-form .urgency { background: #3b82f6; display: inline-block; padding: 6px 20px; border-radius: 30px; font-size: 14px; font-weight: 700; margin-bottom: 20px; }
-        .lead-form p { margin-bottom: 30px; color: #94a3b8; }
-        .lead-form form { display: flex; flex-direction: column; gap: 16px; }
-        .lead-form input { padding: 16px; border-radius: 50px; border: none; font-size: 16px; outline: none; }
-        .lead-form .btn { background: #3b82f6; font-size: 20px; padding: 16px; }
-        .lead-form .btn:hover { background: #2563eb; }
+        /* ===== Анимации при скролле ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        .contacts { padding: 60px 0; background: #ffffff; text-align: center; }
-        .contacts a { color: #3b82f6; font-weight: 600; font-size: 20px; }
-        .contacts .phone, .contacts .email { display: block; margin: 10px 0; }
-
-        .footer { background: #1e293b; color: #94a3b8; padding: 30px 0; text-align: center; }
-        .footer a { color: #3b82f6; font-weight: 600; }
-        .footer .social { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
-        .footer .social a { color: #94a3b8; font-size: 24px; transition: color 0.3s; }
-        .footer .social a:hover { color: #3b82f6; }
-
+        /* ===== Адаптив ===== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 36px; }
-            .hero p { font-size: 18px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .services-grid { grid-template-columns: 1fr; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .guarantees-grid { grid-template-columns: 1fr; }
-            .hero .btn-group { flex-direction: column; align-items: center; }
-            .faq-item .question { font-size: 16px; }
+            .hero-stats { gap: 20px; }
+            .section-title { font-size: 30px; }
+            .header .container { flex-direction: column; align-items: stretch; text-align: center; }
+            .header-actions { justify-content: center; }
+            .cookie-overlay { left: 10px; right: 10px; bottom: 10px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Частицы -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">Kamo<span style="-webkit-text-fill-color:transparent;">Design</span></div>
+            <div class="header-actions">
+                <a href="https://t.me/kamo_martirosyan" class="btn btn-telegram" target="_blank">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+                <a href="#form" class="btn btn-primary">Обсудить</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <h1>Создам лендинг, который <span>продаёт за вас</span></h1>
-            <p>Получите готовую посадочную страницу, которая приносит заявки 24/7. Без лишних затрат и долгих согласований.</p>
+            <h1>Создам лендинг,<br>который продаёт</h1>
+            <p>Дизайн, который впечатляет. Код, который работает. Конверсия, которая приносит деньги.</p>
             <div class="btn-group">
-                <a href="#form" class="btn">Заказать бесплатную консультацию</a>
-                <a href="https://t.me/kamo_martirosyan" class="btn btn-telegram" target="_blank">
-                    <i class="fab fa-telegram-plane"></i> @kamo_martirosyan
-                </a>
+                <a href="#form" class="btn btn-primary">Получить консультацию</a>
+                <a href="#portfolio" class="btn btn-outline">Кейсы</a>
             </div>
-            <img src="https://avatars.mds.yandex.net/i?id=8b02815dc99aee15cf3b880bd26f63fcd0cecb57-16113796-images-thumbs&n=13" alt="Бизнес-лендинг" class="hero-image">
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item"><h3>50+</h3><p>Выполненных проектов</p></div>
-                <div class="stat-item"><h3>100%</h3><p>Довольных клиентов</p></div>
-                <div class="stat-item"><h3>15 дней</h3><p>Средний срок сдачи</p></div>
-                <div class="stat-item"><h3>4.9</h3><p>Средняя оценка</p></div>
+            <div class="hero-stats">
+                <div><h3>50+</h3><p>проектов</p></div>
+                <div><h3>4.9</h3><p>средняя оценка</p></div>
+                <div><h3>7 дней</h3><p>средний срок</p></div>
             </div>
         </div>
     </section>
 
+    <!-- PREMIUM BLOCKS (с анимацией) -->
     <section class="benefits">
         <div class="container">
-            <h2 class="section-title">Почему выбирают меня</h2>
-            <p class="section-subtitle" style="text-align:center; color:#64748b; margin-bottom:40px;">Я делаю лендинги, которые приносят реальные деньги вашему бизнесу.</p>
-            <div class="benefits-grid">
-                <div class="benefit-item"><div class="icon"><i class="fas fa-rocket"></i></div><h3>Высокая конверсия</h3><p>Каждая секция продумана с точки зрения психологии продаж.</p></div>
-                <div class="benefit-item"><div class="icon"><i class="fas fa-bolt"></i></div><h3>Быстро и без бюрократии</h3><p>Готовый лендинг за 7 дней. Никаких лишних согласований.</p></div>
-                <div class="benefit-item"><div class="icon"><i class="fas fa-coins"></i></div><h3>Прозрачные цены</h3><p>Фиксированная стоимость без скрытых доплат. Вы платите за результат.</p></div>
-                <div class="benefit-item"><div class="icon"><i class="fas fa-headset"></i></div><h3>Техническая поддержка</h3><p>Помогаю с настройкой рекламы и доработками в течение месяца.</p></div>
+            <h2 class="section-title">Почему я</h2>
+            <p class="section-subtitle">Создаю сайты, которые работают на результат.</p>
+            <div class="grid-3">
+                <div class="card fade-up"><span class="icon"><i class="fas fa-bolt"></i></span><h3>Скорость</h3><p>Готовый лендинг за 7 дней. Без бюрократии и лишних встреч.</p></div>
+                <div class="card fade-up"><span class="icon"><i class="fas fa-chart-line"></i></span><h3>Конверсия</h3><p>Каждая секция спроектирована по законам психологии продаж.</p></div>
+                <div class="card fade-up"><span class="icon"><i class="fas fa-gem"></i></span><h3>Стиль</h3><p>Уникальный дизайн, который выделяет ваш бизнес среди конкурентов.</p></div>
             </div>
         </div>
     </section>
 
-    <section class="portfolio">
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
         <div class="container">
-            <h2 class="section-title">Примеры моих работ</h2>
-            <p class="section-subtitle" style="text-align:center; color:#64748b; margin-bottom:40px;">Реальные проекты, которые принесли результат клиентам.</p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="https://via.placeholder.com/400x200/2563eb/fff?text=Лендинг+клининга" alt="Клининг"><h4>Клининговая компания</h4><p>Конверсия 12%, окупился за 2 недели.</p></div>
-                <div class="portfolio-item"><img src="https://via.placeholder.com/400x200/2563eb/fff?text=Курс+онлайн" alt="Курс"><h4>Онлайн-курс</h4><p>Собрал 150 заявок на бесплатный урок.</p></div>
-                <div class="portfolio-item"><img src="https://via.placeholder.com/400x200/2563eb/fff?text=Интернет-магазин" alt="Магазин"><h4>Интернет-магазин</h4><p>Увеличил продажи товара на 40%.</p></div>
-                <div class="portfolio-item"><img src="https://via.placeholder.com/400x200/2563eb/fff?text=Салон+красоты" alt="Салон"><h4>Салон красоты</h4><p>Получил 30 записей за первый месяц.</p></div>
+            <h2 class="section-title">Недавние работы</h2>
+            <p class="section-subtitle">Реальные кейсы, которые приносят клиентам деньги.</p>
+            <div class="grid-4">
+                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Клининг" alt=""><h4>Клининг</h4><p>Конверсия 12% за первую неделю</p></div>
+                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Курс" alt=""><h4>Онлайн-курс</h4><p>150 заявок на бесплатный урок</p></div>
+                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Магазин" alt=""><h4>Интернет-магазин</h4><p>Рост продаж на 40%</p></div>
+                <div class="card fade-up"><img src="https://via.placeholder.com/400x220/1a1c23/a78bfa?text=Салон" alt=""><h4>Салон красоты</h4><p>30 записей за месяц</p></div>
             </div>
         </div>
     </section>
 
-    <section class="services">
+    <!-- PRICING -->
+    <section class="pricing">
         <div class="container">
             <h2 class="section-title">Тарифы</h2>
-            <p class="section-subtitle" style="text-align:center; color:#64748b; margin-bottom:40px;">Выберите подходящий пакет для вашего бизнеса.</p>
-            <div class="services-grid">
-                <div class="service-card"><h3>Базовый</h3><div class="price">19 900 ₽</div><ul><li>Одностраничный лендинг</li><li>Текст + дизайн</li><li>Адаптив под мобильные</li><li>Форма захвата</li></ul><a href="#form" class="btn btn-secondary">Заказать</a></div>
-                <div class="service-card popular"><div class="badge">Популярный</div><h3>Оптимальный</h3><div class="price">34 900 ₽</div><ul><li>Всё из базового</li><li>Блок отзывов + портфолио</li><li>Настройка Яндекс.Метрики</li><li>Бонус: 5 баннеров</li></ul><a href="#form" class="btn">Заказать</a></div>
-                <div class="service-card"><h3>VIP</h3><div class="price">59 900 ₽</div><ul><li>Всё из оптимального</li><li>Индивидуальный дизайн</li><li>Анимации + калькулятор</li><li>Поддержка 1 месяц</li></ul><a href="#form" class="btn btn-secondary">Заказать</a></div>
+            <p class="section-subtitle">Выберите идеальный пакет для вашего бизнеса.</p>
+            <div class="grid-3">
+                <div class="price-card fade-up"><h3>Базовый</h3><div class="price">19 900 ₽</div><ul><li>Одностраничный лендинг</li><li>Текст + дизайн</li><li>Адаптив</li><li>Форма захвата</li></ul><a href="#form" class="btn btn-outline">Заказать</a></div>
+                <div class="price-card popular fade-up"><div class="badge">Популярный</div><h3>Оптимальный</h3><div class="price">34 900 ₽</div><ul><li>Всё из базового</li><li>Блок отзывов + портфолио</li><li>Настройка аналитики</li><li>Бонус: 5 баннеров</li></ul><a href="#form" class="btn btn-primary">Заказать</a></div>
+                <div class="price-card fade-up"><h3>VIP</h3><div class="price">59 900 ₽</div><ul><li>Всё из оптимального</li><li>Индивидуальный дизайн</li><li>Анимации + калькулятор</li><li>Поддержка 1 месяц</li></ul><a href="#form" class="btn btn-outline">Заказать</a></div>
             </div>
         </div>
     </section>
 
+    <!-- TESTIMONIALS -->
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">Что говорят клиенты</h2>
-            <p class="section-subtitle" style="text-align:center; color:#64748b; margin-bottom:40px;">Реальные отзывы тех, кто уже получил результат.</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-item"><p>«Лендинг превзошёл ожидания. За первый месяц получили 40 заявок.»</p><div class="author">Алексей, студия дизайна</div></div>
-                <div class="testimonial-item"><p>«Раньше сайт был бесполезен, теперь идёт постоянный поток клиентов.»</p><div class="author">Мария, фитнес-клуб</div></div>
-                <div class="testimonial-item"><p>«Конверсия выросла в 3 раза. Рекомендую!»</p><div class="author">Дмитрий, инфобизнес</div></div>
+            <h2 class="section-title">Отзывы</h2>
+            <p class="section-subtitle">Что говорят клиенты</p>
+            <div class="grid-3">
+                <div class="card fade-up"><p style="font-style:italic; margin-bottom:12px;">«Лендинг превзошёл ожидания. За первый месяц получили 40 заявок.»</p><div style="font-weight:700;">Алексей, студия дизайна</div></div>
+                <div class="card fade-up"><p style="font-style:italic; margin-bottom:12px;">«Раньше сайт был бесполезен, теперь постоянный поток клиентов.»</p><div style="font-weight:700;">Мария, фитнес-клуб</div></div>
+                <div class="card fade-up"><p style="font-style:italic; margin-bottom:12px;">«Конверсия выросла в 3 раза. Рекомендую!»</p><div style="font-weight:700;">Дмитрий, инфобизнес</div></div>
             </div>
         </div>
     </section>
 
-    <section class="faq" id="faq">
+    <!-- FAQ -->
+    <section class="faq">
         <div class="container">
             <h2 class="section-title">Часто задаваемые вопросы</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="question">Сколько времени занимает создание лендинга? <i class="fas fa-chevron-down"></i></div>
-                    <div class="answer">В среднем от 3 до 7 дней в зависимости от сложности. Вам не нужно ждать месяцами.</div>
+            <div style="max-width:700px; margin:0 auto;">
+                <div class="card fade-up" style="cursor:pointer; margin-bottom:12px;" onclick="this.classList.toggle('active'); const ans=this.querySelector('.faq-answer'); if(this.classList.contains('active')) ans.style.maxHeight=ans.scrollHeight+'px'; else ans.style.maxHeight=0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-weight:700;">Сколько времени занимает создание лендинга?</span><i class="fas fa-chevron-down" style="transition:0.3s;"></i></div>
+                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:0.4s; color:var(--text-muted);">В среднем от 3 до 7 дней в зависимости от сложности.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="question">Что входит в стоимость? <i class="fas fa-chevron-down"></i></div>
-                    <div class="answer">Полный цикл: анализ, структура, текст, дизайн, вёрстка, адаптация под мобильные, настройка формы и консультация.</div>
+                <div class="card fade-up" style="cursor:pointer; margin-bottom:12px;" onclick="this.classList.toggle('active'); const ans=this.querySelector('.faq-answer'); if(this.classList.contains('active')) ans.style.maxHeight=ans.scrollHeight+'px'; else ans.style.maxHeight=0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-weight:700;">Что входит в стоимость?</span><i class="fas fa-chevron-down" style="transition:0.3s;"></i></div>
+                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:0.4s; color:var(--text-muted);">Полный цикл: анализ, структура, текст, дизайн, вёрстка, адаптация, форма.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="question">Будет ли у меня доступ к исходному коду? <i class="fas fa-chevron-down"></i></div>
-                    <div class="answer">Да, вы получаете полный исходный код и доступ к админке, чтобы вносить правки самостоятельно.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="question">Что если я недоволен результатом? <i class="fas fa-chevron-down"></i></div>
-                    <div class="answer">Мы даём гарантию 100% возврата в течение 14 дней, если лендинг не соответствует требованиям.</div>
+                <div class="card fade-up" style="cursor:pointer; margin-bottom:12px;" onclick="this.classList.toggle('active'); const ans=this.querySelector('.faq-answer'); if(this.classList.contains('active')) ans.style.maxHeight=ans.scrollHeight+'px'; else ans.style.maxHeight=0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-weight:700;">Есть ли гарантия?</span><i class="fas fa-chevron-down" style="transition:0.3s;"></i></div>
+                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:0.4s; color:var(--text-muted);">Да, 100% возврат в течение 14 дней, если результат не устраивает.</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- GUARANTEES -->
     <section class="guarantees">
         <div class="container">
-            <h2 class="section-title" style="color:#0f172a;">Наши гарантии</h2>
-            <div class="guarantees-grid">
-                <div class="guarantee-item"><i class="fas fa-shield-alt"></i><h4>100% возврат</h4><p>Если результат не устроит, вернём деньги без лишних вопросов.</p></div>
-                <div class="guarantee-item"><i class="fas fa-clock"></i><h4>Точные сроки</h4><p>Соблюдаем дедлайны и всегда сдаём вовремя.</p></div>
-                <div class="guarantee-item"><i class="fas fa-lock"></i><h4>Конфиденциальность</h4><p>Ваши данные и идеи остаются под защитой.</p></div>
-                <div class="guarantee-item"><i class="fas fa-hands-helping"></i><h4>Поддержка 24/7</h4><p>Всегда на связи, чтобы помочь с любым вопросом.</p></div>
+            <h2 class="section-title">Наши гарантии</h2>
+            <div class="grid-3">
+                <div class="card fade-up" style="text-align:center;"><i class="fas fa-shield-alt" style="font-size:40px; color:var(--accent); margin-bottom:12px;"></i><h3>100% возврат</h3><p style="color:var(--text-muted);">Если результат не устроит, вернём деньги</p></div>
+                <div class="card fade-up" style="text-align:center;"><i class="fas fa-clock" style="font-size:40px; color:var(--accent); margin-bottom:12px;"></i><h3>Соблюдение сроков</h3><p style="color:var(--text-muted);">Всегда сдаём вовремя, без задержек</p></div>
+                <div class="card fade-up" style="text-align:center;"><i class="fas fa-lock" style="font-size:40px; color:var(--accent); margin-bottom:12px;"></i><h3>Конфиденциальность</h3><p style="color:var(--text-muted);">Ваши данные и идеи остаются под защитой</p></div>
             </div>
         </div>
     </section>
 
+    <!-- LEAD FORM -->
     <section class="lead-form" id="form">
         <div class="container">
-            <div class="urgency">🔥 Осталось 3 места по старой цене</div>
-            <h2>Получите бесплатную консультацию</h2>
-            <p>Оставьте заявку, и я расскажу, как ваш лендинг может увеличить прибыль.</p>
+            <h2 class="section-title" style="font-size:32px;">Готовы начать?</h2>
+            <p class="section-subtitle">Оставьте заявку, и я свяжусь с вами в течение 30 минут.</p>
             <form action="https://script.google.com/macros/s/AKfycbxE5h9QrLmQbNW4vR64IV9oq0sBtKu_5yY2Fo5xKDtX38w4juKdYWBmdPWq8bmPceOzZA/exec" method="POST">
                 <input type="text" name="name" placeholder="Ваше имя" required>
                 <input type="tel" name="phone" placeholder="Ваш телефон" required>
-                <input type="text" name="tg" placeholder="Ваш Telegram (для связи)">
+                <input type="text" name="tg" placeholder="Ваш Telegram (необязательно)">
                 <button type="submit" class="btn">Отправить заявку</button>
             </form>
-            <p style="margin-top: 20px; color: #94a3b8; font-size: 14px;">Или напишите мне напрямую: <a href="https://t.me/kamo_martirosyan" style="color:#3b82f6; font-weight:600;">@kamo_martirosyan</a></p>
+            <p style="margin-top:20px; font-size:14px; color:var(--text-muted);">Или пишите сразу: <a href="https://t.me/kamo_martirosyan" style="color:var(--accent);">@kamo_martirosyan</a></p>
         </div>
     </section>
 
-    <section class="contacts">
+    <!-- CONTACTS -->
+    <section class="contacts" style="padding:40px 0; text-align:center; border-top:1px solid rgba(255,255,255,0.05);">
         <div class="container">
-            <h2 class="section-title">Свяжитесь со мной</h2>
-            <a href="tel:+79166611546" class="phone"><i class="fas fa-phone-alt"></i> +7 (916) 661-15-46</a>
-            <a href="mailto:kamomartiros1901@gmail.com" class="email"><i class="fas fa-envelope"></i> kamomartiros1901@gmail.com</a>
-            <p style="margin-top: 20px; color:#64748b;">Работаю по всей России и СНГ</p>
+            <p style="font-size:20px; font-weight:600; margin-bottom:8px;">Свяжитесь со мной</p>
+            <p><a href="tel:+79166611546" style="color:var(--accent); text-decoration:none;">+7 (916) 661-15-46</a></p>
+            <p><a href="mailto:kamomartiros1901@gmail.com" style="color:var(--accent); text-decoration:none;">kamomartiros1901@gmail.com</a></p>
+            <p style="color:var(--text-muted); margin-top:8px;">Работаю по всей России и СНГ</p>
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- FOOTER -->
+    <footer class="footer" style="padding:20px 0; text-align:center; border-top:1px solid rgba(255,255,255,0.05); color:var(--text-muted);">
         <div class="container">
-            <p>© 2026 | Создание лендингов под ключ | Telegram: <a href="https://t.me/kamo_martirosyan" target="_blank">@kamo_martirosyan</a></p>
-            <div class="social">
-                <a href="https://t.me/kamo_martirosyan" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-vk"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <p>© 2026 | Kamo Design | <a href="https://t.me/kamo_martirosyan" style="color:var(--accent);">@kamo_martirosyan</a></p>
+            <div style="margin-top:12px; display:flex; justify-content:center; gap:20px;">
+                <a href="https://t.me/kamo_martirosyan" style="color:var(--text-muted); font-size:24px; transition:0.3s;"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" style="color:var(--text-muted); font-size:24px; transition:0.3s;"><i class="fab fa-vk"></i></a>
+                <a href="#" style="color:var(--text-muted); font-size:24px; transition:0.3s;"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
+    <!-- COOKIE -->
+    <div class="cookie-overlay" id="cookieConsent">
+        <h3><i class="fas fa-cookie-bite"></i> Cookies</h3>
+        <p>Мы используем cookies для аналитики и улучшения работы сайта. Продолжая, вы соглашаетесь с политикой.</p>
+        <div class="actions">
+            <button class="btn btn-primary" id="acceptCookies" style="padding:10px 24px; font-size:14px;">Принять</button>
+            <button class="btn btn-outline" id="policyBtn" style="padding:10px 24px; font-size:14px;">Политика</button>
+        </div>
+    </div>
+
     <script>
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.addEventListener('click', () => {
-                item.classList.toggle('active');
-                document.querySelectorAll('.faq-item').forEach(other => {
-                    if (other !== item) other.classList.remove('active');
-                });
+        // Cookie consent
+        const cookieBanner = document.getElementById('cookieConsent');
+        const acceptBtn = document.getElementById('acceptCookies');
+        const policyBtn = document.getElementById('policyBtn');
+
+        if (!localStorage.getItem('cookieAccepted')) {
+            cookieBanner.classList.add('show');
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieAccepted', 'true');
+            cookieBanner.classList.remove('show');
+        });
+
+        policyBtn.addEventListener('click', () => {
+            alert('Ссылка на политику конфиденциальности будет здесь.');
+        });
+
+        // Scroll animations (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
         });
     </script>
+
 </body>
 </html>
